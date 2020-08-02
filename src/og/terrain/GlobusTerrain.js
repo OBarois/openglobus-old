@@ -18,6 +18,9 @@ import { Ray } from '../math/Ray.js';
 import { Extent } from '../Extent.js';
 import { LonLat } from '../LonLat.js';
 
+const MIN_NO_DATA = -1000000;
+const MAX_NO_DATA = 0;
+
 const EVENT_NAMES = [
     /**
     * Triggered when current elevation tile has loaded but before rendereing.
@@ -131,6 +134,8 @@ class GlobusTerrain extends EmptyTerrain {
          * @returns {string} - Url query string.
          */
         this._urlRewriteCallback = null;
+
+        this._noDataRange = new Int32Array([options.minNoDataValue || MIN_NO_DATA, options.maxNoDataValue || MAX_NO_DATA]);
     }
 
     clearCache() {
