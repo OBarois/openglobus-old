@@ -67,7 +67,9 @@ class TerrainWorker {
                     'this_normalMapNormals': segment.normalMapNormals,
                     'heightFactor': segment.planet._heightFactor,
                     'gridSize': segment.planet.terrain.gridSizeByZoom[segment.tileZoom],
-                    'id': this._id++
+                    'id': this._id++,
+                    'elevationMinNoDataValue': segment.planet.terrain.elevationMinNoDataValue,
+                    'elevationMaxNoDataValue': segment.planet.terrain.elevationMaxNoDataValue
                 }, [
                         _elevations.buffer,
                         segment.plainVertices.buffer,

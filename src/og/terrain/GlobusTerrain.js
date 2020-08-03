@@ -18,8 +18,8 @@ import { Ray } from '../math/Ray.js';
 import { Extent } from '../Extent.js';
 import { LonLat } from '../LonLat.js';
 
-const MIN_NO_DATA = -1000000;
-const MAX_NO_DATA = 0;
+const MIN_ELEVATION_NO_DATA_VALUE = -1000000;
+const MAX_ELEVATION_NO_DATA_VALUE = 0;
 
 const EVENT_NAMES = [
     /**
@@ -135,7 +135,8 @@ class GlobusTerrain extends EmptyTerrain {
          */
         this._urlRewriteCallback = null;
 
-        this._noDataRange = new Int32Array([options.minNoDataValue || MIN_NO_DATA, options.maxNoDataValue || MAX_NO_DATA]);
+        this.elevationMinNoDataValue = options.minNoDataValue || MIN_ELEVATION_NO_DATA_VALUE;
+        this.elevationMaxNoDataValue = options.maxNoDataValue || MAX_ELEVATION_NO_DATA_VALUE;
     }
 
     clearCache() {
